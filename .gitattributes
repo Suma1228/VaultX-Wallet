@@ -1,0 +1,4 @@
+Frontend/src/routeTree.gen.ts linguist-generated=true
+Frontend/src/components/ui/* linguist-vendored=true
+Frontend/bun.lock linguist-generated=true
+Frontend/package-lock.json linguist-generated=true
