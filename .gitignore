@@ -1,0 +1,41 @@
+# ===== Secrets — never commit these =====
+.env
+.env.*
+!.env.example
+application-secrets.yml
+application-secrets.yaml
+**/application-local.yml
+**/application-local.yaml
+
+# ===== Java / Maven (auth-service, wallet-service, notification-service) =====
+**/target/
+**/*.class
+**/*.jar
+!**/.mvn/wrapper/maven-wrapper.jar
+**/.mvn/wrapper/maven-wrapper.properties
+**/hs_err_pid*
+
+# ===== Node / Bun (frontend) =====
+**/node_modules/
+**/.tanstack/
+**/dist/
+**/build/
+**/.output/
+**/.vite/
+**/bun.lockb
+**/*.tsbuildinfo
+
+# ===== IDE / editor =====
+.idea/
+*.iml
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
+
+# ===== Logs =====
+**/*.log
+**/logs/
+
+# ===== OS =====
+desktop.ini

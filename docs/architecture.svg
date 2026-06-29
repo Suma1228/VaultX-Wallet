@@ -1,0 +1,66 @@
+<svg width="900" height="480" viewBox="0 0 900 480" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <rect width="900" height="480" fill="#ffffff"/>
+
+  <!-- Title -->
+  <text x="450" y="32" text-anchor="middle" font-size="18" font-weight="700" fill="#111827">VaultX Wallet — System Architecture</text>
+
+  <!-- Frontend -->
+  <rect x="340" y="55" width="220" height="60" rx="10" fill="#ccfbf1" stroke="#0f766e" stroke-width="1.5"/>
+  <text x="450" y="80" text-anchor="middle" font-size="14" font-weight="700" fill="#0f766e">Frontend</text>
+  <text x="450" y="98" text-anchor="middle" font-size="12" fill="#0f766e">React + TanStack Start · :5173</text>
+
+  <!-- Arrows from frontend down to 3 services -->
+  <path d="M390,115 L390,150 L142,150 L142,180" fill="none" stroke="#374151" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M450,115 L450,180" fill="none" stroke="#374151" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M510,115 L510,140 L758,140 L758,180" fill="none" stroke="#374151" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <text x="270" y="145" text-anchor="middle" font-size="11" fill="#6b7280">HTTPS + JWT</text>
+
+  <!-- auth-service -->
+  <rect x="40" y="180" width="204" height="64" rx="10" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.5"/>
+  <text x="142" y="206" text-anchor="middle" font-size="14" font-weight="700" fill="#1d4ed8">auth-service</text>
+  <text x="142" y="224" text-anchor="middle" font-size="11" fill="#1d4ed8">Register · Login · JWT · Profile</text>
+  <text x="142" y="238" text-anchor="middle" font-size="11" fill="#1d4ed8">:8082</text>
+
+  <!-- wallet-service -->
+  <rect x="348" y="180" width="204" height="64" rx="10" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.5"/>
+  <text x="450" y="206" text-anchor="middle" font-size="14" font-weight="700" fill="#1d4ed8">wallet-service</text>
+  <text x="450" y="224" text-anchor="middle" font-size="11" fill="#1d4ed8">Balance · Transfers · Limits</text>
+  <text x="450" y="238" text-anchor="middle" font-size="11" fill="#1d4ed8">:8083</text>
+
+  <!-- notification-service -->
+  <rect x="656" y="180" width="204" height="64" rx="10" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.5"/>
+  <text x="758" y="206" text-anchor="middle" font-size="14" font-weight="700" fill="#1d4ed8">notification-service</text>
+  <text x="758" y="224" text-anchor="middle" font-size="11" fill="#1d4ed8">Email alerts · History</text>
+  <text x="758" y="238" text-anchor="middle" font-size="11" fill="#1d4ed8">:8084</text>
+
+  <!-- JWT validation note -->
+  <text x="450" y="165" text-anchor="middle" font-size="10" fill="#9ca3af">(shared JWT secret — wallet-service validates tokens issued by auth-service)</text>
+
+  <!-- Kafka connector between wallet and notification -->
+  <path d="M552,212 L656,212" fill="none" stroke="#b45309" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arrow-amber)"/>
+  <text x="604" y="265" text-anchor="middle" font-size="11" font-weight="700" fill="#b45309">Kafka</text>
+  <text x="604" y="280" text-anchor="middle" font-size="10" fill="#b45309">wallet.events topic</text>
+
+  <!-- Arrows down to infra -->
+  <path d="M142,244 L142,360" fill="none" stroke="#374151" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M450,244 L450,360" fill="none" stroke="#374151" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M758,244 L758,360" fill="none" stroke="#374151" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Infra -->
+  <rect x="60" y="360" width="780" height="70" rx="10" fill="#f3f4f6" stroke="#4b5563" stroke-width="1.5"/>
+  <text x="450" y="385" text-anchor="middle" font-size="14" font-weight="700" fill="#374151">Shared infrastructure</text>
+  <text x="450" y="405" text-anchor="middle" font-size="12" fill="#374151">PostgreSQL (×2 schemas) · Apache Kafka · Zookeeper · Redis</text>
+
+  <!-- Footer -->
+  <text x="450" y="460" text-anchor="middle" font-size="11" fill="#9ca3af">Each service is independently deployable, runs on its own port, and owns its own database schema.</text>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#374151"/>
+    </marker>
+    <marker id="arrow-amber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#b45309"/>
+    </marker>
+  </defs>
+</svg>
